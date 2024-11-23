@@ -41,8 +41,8 @@ def login_signup_page():
                     if user_response.status_code == 200:
                         st.session_state.user_id = user_response.json()["id"]
                         st.success("Login successful!")
-                        # st.experimental_set_query_params(page="chatbot")
-                        st.query_params['page'] = "chatbot"
+                        st.experimental_set_query_params(page="chatbot")
+                        # st.query_params['page'] = "chatbot"
                         st.rerun()
                     else:
                         st.error("Failed to retrieve user details")
@@ -279,7 +279,7 @@ def interact_with_chatbots():
 def main():
     st.set_page_config(page_title="Multi-Chatbot Platform")
     
-    if 'page' not in st.query_params:
+    if 'page' not in st.experimental_get_query_params():
         login_signup_page()
     else:
         page = st.sidebar.radio("Navigate", 
@@ -289,7 +289,7 @@ def main():
         if st.sidebar.button("Logout"):
             st.session_state.auth_token = None
             st.session_state.user_id = None
-            st.query_params
+            st.experimental_set_query_params()
             st.rerun()
         
         if page == "Create Chatbot":
