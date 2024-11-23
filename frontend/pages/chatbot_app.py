@@ -294,7 +294,7 @@ def main():
         
         if page == "Create Chatbot":
             create_chatbot_page()
-        elif page == "Interact_with_Chatbots":
+        elif page == "Interact with Chatbots":
             interact_with_chatbots()
         elif page == "dashboard":
             dashboard()
